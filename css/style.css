@@ -207,3 +207,76 @@ flex-direction: column;
     font-weight: bolder;
     color: #fff;
 }
+
+/*============
+login page
+==============*/
+.containerLogin {
+    width: 400px;
+    background: linear-gradient(to bottom, #0a4174, #001d39);
+    padding: 40px;
+    border-radius: 30px;
+    margin: 120px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.containerLogin h2 {
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.containerLogin input {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 15px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-family: inherit;
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.containerLogin input:focus {
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.containerLogin button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 30px;
+    border: none;
+    background-color: #fff;
+    color: #001d39;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.containerLogin button:hover {
+    transform: scale(1.02);
+}
+
+.containerLogin .links {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.containerLogin .links a {
+    color: #d7e7ff;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.containerLogin .links a:hover {
+    text-decoration: underline;
+}
