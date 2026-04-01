@@ -1,0 +1,374 @@
+*{
+    box-sizing: border-box;
+}
+
+/* ====================
+   Global Variables
+==================== */
+:root{
+    --page-max-width: 1200px;
+    --content-max-width: 900px;
+    --surface-radius: 30px;
+    --surface-radius-sm: 24px;
+    --surface-padding: 28px;
+    --section-spacing: 64px;
+    --text-muted: #d1d5db;
+    --text-soft: #d7e7ff;
+}
+
+/* ====================
+   Base
+==================== */
+body{
+    padding: 60px 0 0;
+    margin: 0;
+    background-color: #001d39;
+    color: #fff;
+    font-family: "Tajawal", sans-serif;
+    overflow-x: hidden;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+/* ====================
+   Header / Nav
+==================== */
+nav{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    background: rgba(0, 29, 57, 0.88);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+nav #logo{
+    height: 32px;
+    width: auto;
+    margin: 0 15px;
+}
+
+nav .links{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+}
+
+nav .links a{
+    text-decoration: none;
+    align-self: center;
+    font-size: clamp(16px, 2vw, 30px);
+    font-weight: bolder;
+    color: #fff;
+    margin: 0;
+}
+
+/* ====================
+   Hero Section
+==================== */
+.heroSection{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--section-spacing);
+    margin: 56px auto 0;
+    padding: 0;
+    width: min(var(--page-max-width), calc(100% - 48px));
+}
+
+.heroSection .introduction{
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    text-align: right;
+}
+
+.heroSection .introduction #firstP{
+    font-size: clamp(26px, 3vw, 35px);
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.9;
+    margin: 0;
+}
+
+.heroSection .introduction p{
+    font-size: clamp(18px, 2vw, 24px);
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* ====================
+   Features Section
+==================== */
+.featuresSection{
+    width: 100%;
+}
+
+.sectionDivider{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 32px;
+    text-align: right;
+}
+
+.sectionDivider h2{
+    margin: 0;
+    font-size: clamp(28px, 3vw, 38px);
+    color: #fff;
+    line-height: 1.35;
+}
+
+.heroSection .features{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 28px;
+    align-items: stretch;
+}
+
+.heroSection .features .feature{
+    text-align: center;
+    width: 100%;
+    min-height: 220px;
+    padding: 28px 24px;
+    background: linear-gradient(to bottom, #0a4174, #001d39);
+    border-radius: var(--surface-radius);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.heroSection .features .feature h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 0 14px;
+    font-size: clamp(22px, 2.4vw, 28px);
+    line-height: 1.35;
+}
+
+.heroSection .features .feature h3 i{
+    color: var(--text-soft);
+    font-size: 24px;
+}
+
+.heroSection .features .feature p{
+    margin: 0;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 30ch;
+}
+
+/* ====================
+   Voting Section
+==================== */
+.container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--section-spacing);
+}
+
+.voting{
+    display: flex;
+    min-height: 400px;
+    width: min(var(--page-max-width), calc(100% - 48px));
+    background: linear-gradient(to left, #0a4174, #001d39);
+    border-radius: var(--surface-radius);
+    margin-bottom: 100px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 24px;
+    padding: var(--surface-padding);
+}
+
+.container .voting .subject{
+    width: 32%;
+    display: flex;
+}
+
+.container .voting .OrganizationLogo{
+    align-items: center;
+    justify-content: center;
+}
+
+.container .voting .subject img{
+    width: min(250px, 100%);
+    border-radius: 50%;
+}
+
+.container .voting .main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 28px;
+}
+
+.container .voting .main h1{
+    padding: 0;
+    margin: 0;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.4;
+}
+
+.container .voting .main h2{
+    padding: 0;
+    margin: 12px 0 0;
+    font-size: clamp(18px, 2vw, 25px);
+    color: var(--text-muted);
+}
+
+.container .voting .main .btn{
+    background-color: #fff;
+    width: min(200px, 100%);
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    margin: 0;
+}
+
+.container .voting .main .btn a{
+    width: 100%;
+    text-decoration: none;
+    color: #001d39;
+    font-size: clamp(22px, 2.4vw, 30px);
+    font-weight: bolder;
+}
+
+.container .voting .slogan{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container .voting .slogan p{
+    padding: 0;
+    margin: 0;
+    font-size: clamp(28px, 4vw, 50px);
+    font-weight: bolder;
+    color: #fff;
+    line-height: 1.2;
+}
+
+/* ====================
+   Responsive
+==================== */
+@media (max-width: 992px){
+    body{
+        padding-top: 92px;
+    }
+
+    nav{
+        height: auto;
+        padding: 12px 20px;
+        gap: 12px;
+    }
+
+    .voting{
+        flex-direction: column;
+        width: min(900px, calc(100% - 32px));
+        padding: 32px 20px;
+    }
+
+    .container .voting .subject{
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 640px){
+    body{
+        padding-top: 120px;
+    }
+
+    nav{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 16px;
+    }
+
+    nav #logo{
+        margin: 0;
+        height: 28px;
+    }
+
+    nav .links{
+        justify-content: center;
+    }
+
+    .heroSection{
+        width: calc(100% - 24px);
+        padding: 0;
+        gap: 48px;
+    }
+
+    .heroSection .introduction{
+        text-align: center;
+    }
+
+    .sectionDivider{
+        align-items: center;
+        text-align: center;
+    }
+
+    .heroSection .introduction #firstP{
+        line-height: 1.6;
+    }
+
+    .heroSection .features{
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .heroSection .features .feature{
+        padding: 20px 16px;
+        border-radius: var(--surface-radius-sm);
+    }
+
+    .container{
+        margin-top: 48px;
+    }
+
+    .voting{
+        width: calc(100% - 24px);
+        border-radius: var(--surface-radius-sm);
+        padding: 24px 16px;
+        margin-bottom: 60px;
+    }
+}
