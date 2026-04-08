@@ -12,8 +12,17 @@
     --surface-radius-sm: 24px;
     --surface-padding: 28px;
     --section-spacing: 64px;
-    --text-muted: #d1d5db;
-    --text-soft: #d7e7ff;
+    --bg-main: #07111F;
+    --surface-top: #0E3A5D;
+    --surface-bottom: #081423;
+    --text-main: #F7FBFF;
+    --text-muted: #B7C9D9;
+    --text-soft: #35E0C4;
+    --button-bg: #F4B942;
+    --button-hover: #FFD166;
+    --button-text: #07111F;
+    --nav-bg: rgba(7, 17, 31, 0.92);
+    --nav-border: rgba(53, 224, 196, 0.18);
 }
 
 /* ====================
@@ -22,10 +31,11 @@
 body{
     padding: 60px 0 0;
     margin: 0;
-    background-color: #001d39;
-    color: #fff;
+    background-color: var(--bg-main);
+    color: var(--text-main);
     font-family: "Tajawal", sans-serif;
     overflow-x: hidden;
+    animation: pageFadeIn 0.7s ease-out both;
 }
 
 img{
@@ -49,18 +59,39 @@ nav{
     left: 0;
     z-index: 1000;
     box-sizing: border-box;
-    background: rgba(0, 29, 57, 0.88);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-border);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: background 0.25s ease, box-shadow 0.25s ease;
+    animation: slideDown 0.7s ease-out both;
 }
 
 nav #logo{
     height: 32px;
     width: auto;
     margin: 0 15px;
+}
+
+nav .logo-link{
+    display: inline-flex;
+    align-items: center;
+}
+
+nav .menu-toggle{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--nav-border);
+    border-radius: 50%;
+    background: rgba(53, 224, 196, 0.12);
+    color: var(--text-soft);
+    cursor: pointer;
+    padding: 0;
+    font-size: 18px;
 }
 
 nav .links{
@@ -77,8 +108,13 @@ nav .links a{
     align-self: center;
     font-size: clamp(16px, 2vw, 30px);
     font-weight: bolder;
-    color: #fff;
+    color: var(--text-main);
     margin: 0;
+}
+
+nav .links a.active,
+nav .links a:hover{
+    color: var(--text-soft);
 }
 
 /* ====================
@@ -92,6 +128,7 @@ nav .links a{
     margin: 56px auto 0;
     padding: 0;
     width: min(var(--page-max-width), calc(100% - 48px));
+    animation: fadeUp 0.9s ease-out 0.15s both;
 }
 
 .heroSection .introduction{
@@ -105,7 +142,7 @@ nav .links a{
 
 .heroSection .introduction #firstP{
     font-size: clamp(26px, 3vw, 35px);
-    color: #fff;
+    color: var(--text-main);
     font-weight: 700;
     line-height: 1.9;
     margin: 0;
@@ -136,7 +173,7 @@ nav .links a{
 .sectionDivider h2{
     margin: 0;
     font-size: clamp(28px, 3vw, 38px);
-    color: #fff;
+    color: var(--text-soft);
     line-height: 1.35;
 }
 
@@ -153,7 +190,7 @@ nav .links a{
     width: 100%;
     min-height: 220px;
     padding: 28px 24px;
-    background: linear-gradient(to bottom, #0a4174, #001d39);
+    background: linear-gradient(to bottom, var(--surface-top), var(--surface-bottom));
     border-radius: var(--surface-radius);
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
     display: flex;
@@ -200,7 +237,7 @@ nav .links a{
     display: flex;
     min-height: 400px;
     width: min(var(--page-max-width), calc(100% - 48px));
-    background: linear-gradient(to left, #0a4174, #001d39);
+    background: linear-gradient(to left, var(--surface-top), var(--surface-bottom));
     border-radius: var(--surface-radius);
     margin-bottom: 100px;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
@@ -208,6 +245,50 @@ nav .links a{
     flex-direction: row-reverse;
     gap: 24px;
     padding: var(--surface-padding);
+    animation: fadeUp 0.9s ease-out 0.3s both;
+}
+
+@keyframes pageFadeIn{
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown{
+    from{
+        opacity: 0;
+        transform: translateY(-24px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity: 0;
+        transform: translateY(32px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    body,
+    nav,
+    .heroSection,
+    .voting{
+        animation: none;
+    }
 }
 
 .container .voting .subject{
@@ -249,7 +330,7 @@ nav .links a{
 }
 
 .container .voting .main .btn{
-    background-color: #fff;
+    background-color: var(--button-bg);
     width: min(200px, 100%);
     height: 50px;
     text-align: center;
@@ -263,7 +344,7 @@ nav .links a{
 .container .voting .main .btn a{
     width: 100%;
     text-decoration: none;
-    color: #001d39;
+    color: var(--button-text);
     font-size: clamp(22px, 2.4vw, 30px);
     font-weight: bolder;
 }
@@ -280,7 +361,7 @@ nav .links a{
     margin: 0;
     font-size: clamp(28px, 4vw, 50px);
     font-weight: bolder;
-    color: #fff;
+    color: var(--text-main);
     line-height: 1.2;
 }
 
@@ -317,9 +398,9 @@ nav .links a{
     }
 
     nav{
-        flex-direction: column;
+        flex-direction: row-reverse;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         padding: 12px 16px;
     }
 
@@ -328,8 +409,34 @@ nav .links a{
         height: 28px;
     }
 
+    nav .menu-toggle{
+        display: inline-flex;
+    }
+
     nav .links{
-        justify-content: center;
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 16px;
+        left: 16px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 14px 16px;
+        border-radius: 20px;
+        background: var(--nav-bg);
+        border: 1px solid var(--nav-border);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
+    }
+
+    nav.menu-open .links{
+        display: flex;
+    }
+
+    nav .links a{
+        width: 100%;
+        text-align: right;
+        font-size: 20px;
     }
 
     .heroSection{
