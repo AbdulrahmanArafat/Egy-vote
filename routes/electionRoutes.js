@@ -49,14 +49,14 @@ async function getVotingElection() {
     return election;
 }
 
-function requireVerifiedSession(request, response, next) {
+async function requireVerifiedSession(request, response, next) {
     const token = extractToken(request);
     if (!token) {
         return response.status(401).json({
             message: "يجب التحقق من رمز OTP قبل التصويت."
         });
     }
-    const session = getVerifiedSession(token);
+    const session = await getVerifiedSession(token);
     if (!session) {
         return response.status(401).json({
             message: "انتهت صلاحية جلسة التحقق. يرجى البدء من جديد."
@@ -117,7 +117,7 @@ router.post("/auth/request-otp", async (request, response) => {
         }
 
         if (voter.has_voted) {
-            clearSessionsForNationalId(nationalId);
+            await clearSessionsForNationalId(nationalId);
             await syncSeedDataState(voter.national_id);
             await recordDuplicateVoteAttempt(voter, request, { stage: "request-otp" });
             return response.status(409).json({
@@ -134,7 +134,7 @@ router.post("/auth/request-otp", async (request, response) => {
             });
         }
 
-        const otpSession = createOtpSession(voter);
+        const otpSession = await createOtpSession(voter);
 
         if (!isEmailConfigured()) {
             return response.status(503).json({
@@ -207,7 +207,7 @@ router.post("/auth/verify-otp", async (request, response) => {
         }
 
         if (voter.has_voted) {
-            clearSessionsForNationalId(nationalId);
+            await clearSessionsForNationalId(nationalId);
             await syncSeedDataState(voter.national_id);
             await recordDuplicateVoteAttempt(voter, request, { stage: "verify-otp" });
             return response.status(409).json({
@@ -215,7 +215,7 @@ router.post("/auth/verify-otp", async (request, response) => {
             });
         }
 
-        const verificationResult = verifyOtpSession(nationalId, otp);
+        const verificationResult = await verifyOtpSession(nationalId, otp);
 
         if (!verificationResult.ok) {
             await incrementFailedVoterLogin({
@@ -347,7 +347,7 @@ router.post("/votes", requireVerifiedSession, async (request, response) => {
         );
 
         if (!voter) {
-            clearSessionsForNationalId(request.verificationSession.nationalId);
+            await clearSessionsForNationalId(request.verificationSession.nationalId);
             await recordDuplicateVoteAttempt(
                 { _id: request.verificationSession.voterId, national_id: request.verificationSession.nationalId },
                 request,
@@ -416,8 +416,8 @@ router.post("/votes", requireVerifiedSession, async (request, response) => {
         }
 
         await syncSeedDataState();
-        clearVerifiedSession(request.verificationToken);
-        clearSessionsForNationalId(request.verificationSession.nationalId);
+        await clearVerifiedSession(request.verificationToken);
+        await clearSessionsForNationalId(request.verificationSession.nationalId);
 
         return response.json({
             message: `تم تسجيل صوتك بنجاح للمرشح ${updatedCandidate.name}.`,

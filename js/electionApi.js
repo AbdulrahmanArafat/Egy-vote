@@ -4,7 +4,20 @@
         verifiedSession: "egyVote.verifiedSession",
         voteReceipt: "egyVote.voteReceipt"
     };
-    const API_BASE_URL = window.location.port === "3000" ? "" : "http://127.0.0.1:3000";
+    function getApiBaseUrl() {
+        if (window.location.protocol === "file:") {
+            return "http://127.0.0.1:3000";
+        }
+
+        const isLocalhost = ["127.0.0.1", "localhost"].includes(window.location.hostname);
+        if (isLocalhost && window.location.port && window.location.port !== "3000") {
+            return "http://127.0.0.1:3000";
+        }
+
+        return "";
+    }
+
+    const API_BASE_URL = getApiBaseUrl();
 
     function readStorage(key) {
         const value = sessionStorage.getItem(key);

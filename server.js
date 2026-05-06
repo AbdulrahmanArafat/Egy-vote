@@ -41,7 +41,9 @@ app.use(express.urlencoded({ extended: false }));
 
 // ─── Static files ─────────────────────────────────────────────────────────────
 app.use("/public", express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(__dirname), { index: false }));
+app.use("/css", express.static(path.join(__dirname, "css")));
+app.use("/js", express.static(path.join(__dirname, "js")));
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 // ─── API routes ───────────────────────────────────────────────────────────────
 app.use("/api", apiLimiter, electionRoutes);

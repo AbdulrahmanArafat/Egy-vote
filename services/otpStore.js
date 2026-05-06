@@ -1,26 +1,8 @@
 const crypto = require("crypto");
+const AuthSession = require("../models/AuthSession");
 
 const OTP_TTL_MS = 5 * 60 * 1000;
 const VERIFIED_TTL_MS = 15 * 60 * 1000;
-
-const otpSessions = new Map();
-const verifiedSessions = new Map();
-
-function cleanupExpiredSessions() {
-    const now = Date.now();
-
-    for (const [nationalId, session] of otpSessions.entries()) {
-        if (session.expiresAt <= now) {
-            otpSessions.delete(nationalId);
-        }
-    }
-
-    for (const [token, session] of verifiedSessions.entries()) {
-        if (session.expiresAt <= now) {
-            verifiedSessions.delete(token);
-        }
-    }
-}
 
 function generateOtp() {
     return String(Math.floor(100000 + Math.random() * 900000));
@@ -28,6 +10,10 @@ function generateOtp() {
 
 function generateToken() {
     return crypto.randomBytes(24).toString("hex");
+}
+
+function hashOtp(value) {
+    return crypto.createHash("sha256").update(String(value || "")).digest("hex");
 }
 
 function maskEmail(email) {
@@ -47,17 +33,16 @@ function maskEmail(email) {
     return `${visiblePart}${hiddenPart}@${domain}`;
 }
 
-function createOtpSession(voter) {
-    cleanupExpiredSessions();
-
+async function createOtpSession(voter) {
     const otp = generateOtp();
-    const expiresAt = Date.now() + OTP_TTL_MS;
 
-    otpSessions.set(voter.national_id, {
-        code: otp,
-        expiresAt,
-        voterId: voter._id.toString(),
-        nationalId: voter.national_id
+    await AuthSession.deleteMany({ national_id: voter.national_id });
+    await AuthSession.create({
+        session_type: "otp",
+        national_id: voter.national_id,
+        voter_id: voter._id,
+        otp_code_hash: hashOtp(otp),
+        expires_at: new Date(Date.now() + OTP_TTL_MS)
     });
 
     return {
@@ -67,10 +52,11 @@ function createOtpSession(voter) {
     };
 }
 
-function verifyOtpSession(nationalId, otp) {
-    cleanupExpiredSessions();
-
-    const session = otpSessions.get(nationalId);
+async function verifyOtpSession(nationalId, otp) {
+    const session = await AuthSession.findOne({
+        session_type: "otp",
+        national_id: nationalId
+    });
 
     if (!session) {
         return {
@@ -79,7 +65,15 @@ function verifyOtpSession(nationalId, otp) {
         };
     }
 
-    if (session.code !== otp) {
+    if (session.expires_at.getTime() <= Date.now()) {
+        await session.deleteOne();
+        return {
+            ok: false,
+            message: "انتهت صلاحية رمز التحقق. اطلب رمزًا جديدًا."
+        };
+    }
+
+    if (session.otp_code_hash !== hashOtp(otp)) {
         return {
             ok: false,
             message: "رمز التحقق غير صحيح."
@@ -87,13 +81,15 @@ function verifyOtpSession(nationalId, otp) {
     }
 
     const token = generateToken();
-    verifiedSessions.set(token, {
-        voterId: session.voterId,
-        nationalId: session.nationalId,
-        expiresAt: Date.now() + VERIFIED_TTL_MS
-    });
 
-    otpSessions.delete(nationalId);
+    await AuthSession.deleteMany({ national_id: nationalId });
+    await AuthSession.create({
+        session_type: "verified",
+        national_id: nationalId,
+        voter_id: session.voter_id,
+        token,
+        expires_at: new Date(Date.now() + VERIFIED_TTL_MS)
+    });
 
     return {
         ok: true,
@@ -101,36 +97,55 @@ function verifyOtpSession(nationalId, otp) {
     };
 }
 
-function createVerifiedSession(voterId, nationalId) {
-    cleanupExpiredSessions();
-
+async function createVerifiedSession(voterId, nationalId) {
     const token = generateToken();
-    verifiedSessions.set(token, {
-        voterId,
-        nationalId,
-        expiresAt: Date.now() + VERIFIED_TTL_MS
+
+    await AuthSession.deleteMany({
+        session_type: "verified",
+        national_id: nationalId
+    });
+    await AuthSession.create({
+        session_type: "verified",
+        national_id: nationalId,
+        voter_id: voterId,
+        token,
+        expires_at: new Date(Date.now() + VERIFIED_TTL_MS)
     });
 
     return token;
 }
 
-function getVerifiedSession(token) {
-    cleanupExpiredSessions();
-    return verifiedSessions.get(token) || null;
-}
+async function getVerifiedSession(token) {
+    const session = await AuthSession.findOne({
+        session_type: "verified",
+        token
+    }).lean();
 
-function clearVerifiedSession(token) {
-    verifiedSessions.delete(token);
-}
-
-function clearSessionsForNationalId(nationalId) {
-    otpSessions.delete(nationalId);
-
-    for (const [token, session] of verifiedSessions.entries()) {
-        if (session.nationalId === nationalId) {
-            verifiedSessions.delete(token);
-        }
+    if (!session) {
+        return null;
     }
+
+    if (new Date(session.expires_at).getTime() <= Date.now()) {
+        await AuthSession.deleteOne({ _id: session._id });
+        return null;
+    }
+
+    return {
+        voterId: String(session.voter_id),
+        nationalId: session.national_id,
+        expiresAt: new Date(session.expires_at).getTime()
+    };
+}
+
+async function clearVerifiedSession(token) {
+    await AuthSession.deleteOne({
+        session_type: "verified",
+        token
+    });
+}
+
+async function clearSessionsForNationalId(nationalId) {
+    await AuthSession.deleteMany({ national_id: nationalId });
 }
 
 module.exports = {
