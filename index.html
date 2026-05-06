@@ -4,98 +4,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Egy vote</title>
+    <meta name="description" content="منصة Egy Vote للتصويت الإلكتروني الآمن — شارك في الانتخابات بسهولة وأمان عبر التحقق بالرقم القومي ورمز OTP.">
+    <meta name="keywords" content="تصويت إلكتروني, انتخابات, مصر, Egy Vote, ناخب, رقم قومي">
+    <meta name="author" content="Egy Vote">
+    <meta property="og:title" content="Egy Vote — منصة التصويت الإلكتروني">
+    <meta property="og:description" content="صوّت بأمان وشفافية عبر منصة Egy Vote الإلكترونية.">
+    <meta property="og:type" content="website">
+
+    <title>Egy Vote — منصة التصويت الإلكتروني</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="index.html" class="logo-link" aria-label="الصفحة الرئيسية">
-                <img src="images/logo.png" alt="شعار الموقع" id="logo">
+    <!-- ===== HEADER / NAV ===== -->
+    <header id="site-header" role="banner">
+        <nav id="main-nav" aria-label="القائمة الرئيسية">
+            <a href="/" class="logo-link" aria-label="الصفحة الرئيسية لـ Egy Vote">
+                <img src="images/logo.png" alt="شعار Egy Vote" id="logo">
             </a>
-            <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">
+
+            <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="nav-links">
                 <i class="fa-solid fa-bars" aria-hidden="true"></i>
             </button>
-            <div class="links">
-                <a href="index.html" class="active">الرئيسية</a>
-                <a href="html/about.html">حول المنصة</a>
-                <a href="html/howToVote.html">كيفية التصويت</a>
-                <a href="html/contactUs.html">الدعم</a>
+
+            <div class="links" id="nav-links" role="navigation">
+                <a href="/" class="active" aria-current="page">الرئيسية</a>
+                <a href="/about">حول المنصة</a>
+                <a href="/how-to-vote">كيفية التصويت</a>
+                <a href="/contact">الدعم</a>
+                <a href="/admin/login" class="admin-btn" aria-label="الدخول إلى لوحة التحكم">
+                    <i class="fa-solid fa-lock" aria-hidden="true"></i> لوحة التحكم
+                </a>
             </div>
         </nav>
     </header>
 
-    <section class="heroSection">
-        <div class="introduction">
-            <p id="firstP">
-                Egy Vote هي منصة تصويت إلكتروني آمنة وحديثة، تهدف إلى توفير تجربة تصويت سهلة وموثوقة
-                وشفافة. تُمكّن المستخدمين من المشاركة في الانتخابات بسهولة، مع ضمان التحقق من الهوية،
-                وحماية خصوصية الناخب، ودقة النتائج.
-            </p>
-        </div>
+    <main id="main-content">
 
-        <div class="featuresSection">
-            <div class="sectionDivider">
-                <h2>ليه Egy Vote تجربة أوضح وأسهل؟</h2>
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero-section" aria-labelledby="hero-heading">
+            <div class="hero-particles" aria-hidden="true">
+                <span class="particle"></span>
+                <span class="particle"></span>
+                <span class="particle"></span>
+                <span class="particle"></span>
+                <span class="particle"></span>
             </div>
 
-            <div class="features">
-                <div class="feature">
-                    <h3><i class="fa-solid fa-shield-halved"></i><span>أمان وحماية كاملة</span></h3>
+            <div class="hero-content">
+                <span class="hero-eyebrow" id="hero-eyebrow">
+                    <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                    منصة التصويت الرسمية
+                </span>
+                <h1 id="hero-heading" class="hero-title">
+                    صوّتك <span class="highlight">أمانة</span>..
+                    <br>ومستقبل <span class="highlight-gold">وطن</span>
+                </h1>
+                <p class="hero-subtitle">
+                    منصة Egy Vote للتصويت الإلكتروني — آمنة، سريعة، وشفافة.
+                    تحقق من هويتك وصوّت لمرشحك في دقائق من أي مكان.
+                </p>
+                <div class="hero-actions">
+                    <div id="hero-vote-action">
+                        <!-- يتم ملء هذا الجزء عبر JavaScript بناءً على حالة الانتخابات -->
+                        <span class="cta-primary cta-disabled" aria-label="جارٍ التحميل...">
+                            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                            جارٍ التحميل...
+                        </span>
+                    </div>
+                    <a href="/how-to-vote" class="cta-secondary">
+                        <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                        كيفية التصويت
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+                <div class="visual-card card-float-1">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>تشفير كامل</span>
+                </div>
+                <div class="visual-card card-float-2">
+                    <i class="fa-solid fa-envelope-circle-check"></i>
+                    <span>OTP آمن</span>
+                </div>
+                <div class="visual-card card-float-3">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>نتائج فورية</span>
+                </div>
+                <div class="hero-badge">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== STATS SECTION ===== -->
+        <section class="stats-section" aria-label="إحصائيات المنصة">
+            <div class="stats-container">
+                <article class="stat-card" aria-label="الأمان">
+                    <div class="stat-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-suffix">%</div>
+                    <p class="stat-label">حماية البيانات</p>
+                </article>
+                <article class="stat-card" aria-label="التحقق">
+                    <div class="stat-icon"><i class="fa-solid fa-id-card" aria-hidden="true"></i></div>
+                    <div class="stat-number" data-target="14">0</div>
+                    <div class="stat-suffix">رقم</div>
+                    <p class="stat-label">تحقق بالرقم القومي</p>
+                </article>
+                <article class="stat-card" aria-label="OTP">
+                    <div class="stat-icon"><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i></div>
+                    <div class="stat-number" data-target="6">0</div>
+                    <div class="stat-suffix">أرقام</div>
+                    <p class="stat-label">رمز OTP آمن</p>
+                </article>
+                <article class="stat-card" aria-label="الشفافية">
+                    <div class="stat-icon"><i class="fa-solid fa-eye" aria-hidden="true"></i></div>
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-suffix">%</div>
+                    <p class="stat-label">شفافية في النتائج</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== FEATURES SECTION ===== -->
+        <section class="features-section" aria-labelledby="features-heading">
+            <div class="section-header">
+                <span class="section-eyebrow">لماذا Egy Vote؟</span>
+                <h2 id="features-heading">تجربة تصويت أوضح وأسهل</h2>
+                <p>منصة مصممة لتوفير تصويت آمن وشفاف بأبسط خطوات ممكنة</p>
+            </div>
+
+            <div class="features-grid">
+                <article class="feature-card" aria-label="الأمان والحماية">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                    </div>
+                    <h3>أمان وحماية كاملة</h3>
                     <p>تشفير للبيانات والتحقق من الهوية لضمان أن عملية التصويت تتم بسرية ودقة وبدون تلاعب.</p>
-                </div>
+                </article>
 
-                <div class="feature">
-                    <h3><i class="fa-solid fa-desktop"></i><span>واجهة سهلة وواضحة</span></h3>
+                <article class="feature-card" aria-label="واجهة سهلة">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-desktop" aria-hidden="true"></i>
+                    </div>
+                    <h3>واجهة سهلة وواضحة</h3>
                     <p>تصميم مباشر يساعد الناخب على الوصول للمعلومات والخطوات المطلوبة بسرعة ومن غير تعقيد.</p>
-                </div>
+                </article>
 
-                <div class="feature">
-                    <h3><i class="fa-solid fa-chart-column"></i><span>نتائج دقيقة وشفافة</span></h3>
+                <article class="feature-card" aria-label="نتائج دقيقة">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-chart-column" aria-hidden="true"></i>
+                    </div>
+                    <h3>نتائج دقيقة وشفافة</h3>
                     <p>عرض منظم للنتائج والإحصائيات بشكل واضح، مما يعزز الثقة في نزاهة العملية الانتخابية.</p>
-                </div>
+                </article>
 
-                <div class="feature">
-                    <h3><i class="fa-solid fa-globe"></i><span>إتاحة من أي مكان</span></h3>
-                    <p>إمكانية الوصول إلى المنصة عبر الإنترنت بما يسهّل المشاركة في الانتخابات من أي موقع داخل مصر.</p>
-                </div>
+                <article class="feature-card" aria-label="إتاحة من أي مكان">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                    </div>
+                    <h3>إتاحة من أي مكان</h3>
+                    <p>إمكانية الوصول إلى المنصة عبر الإنترنت بما يسهّل المشاركة في الانتخابات من أي موقع.</p>
+                </article>
+
+                <article class="feature-card" aria-label="OTP عبر البريد">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-envelope-circle-check" aria-hidden="true"></i>
+                    </div>
+                    <h3>تحقق عبر البريد الإلكتروني</h3>
+                    <p>رمز OTP يُرسل مباشرة على بريدك الإلكتروني المسجل لضمان هويتك قبل التصويت.</p>
+                </article>
+
+                <article class="feature-card" aria-label="منع التصويت المكرر">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-ban" aria-hidden="true"></i>
+                    </div>
+                    <h3>منع التصويت المكرر</h3>
+                    <p>نظام متكامل يمنع أي محاولة للتصويت أكثر من مرة ويحمي نزاهة العملية الانتخابية.</p>
+                </article>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="container">
-        <div class="voting">
-            <div class="subject OrganizationLogo">
-                <img src="images/p.png" alt="لوجو المنظمة">
-            </div>
+        <!-- ===== ELECTION CARD SECTION ===== -->
+        <section class="election-section" id="election-card-section" aria-labelledby="election-heading" hidden>
+            <div class="election-wrapper">
 
-            <div class="subject main">
-                <div class="tittle">
-                    <h1>الإنتخابات الرئاسية لجمهورية مصر العربية</h1>
-                    <h2>من <span class="startDate">dd/mm/yy</span> الي <span class="endDate">dd/mm/yy</span></h2>
+                <div class="election-logo-col" aria-hidden="true">
+                    <div class="election-logo-ring">
+                        <img src="images/p.png" alt="شعار الجهة المنظِّمة للانتخابات">
+                    </div>
                 </div>
-                <div class="btn">
-                    <a href="html/logIn.html">صوت الأن</a>
-                </div>
-            </div>
 
-            <div class="subject slogan">
-                <div>
+                <div class="election-main-col">
+                    <span class="election-status active-badge" id="election-status-badge" hidden>
+                        <i class="fa-solid fa-circle status-dot" aria-hidden="true"></i>
+                        انتخابات مفتوحة الآن
+                    </span>
+                    <span class="election-status closed-badge" id="election-closed-badge" hidden>
+                        <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
+                        انتهت الانتخابات
+                    </span>
+
+                    <h2 id="election-heading" data-election-title>الانتخابات</h2>
+
+                    <p class="election-dates" id="election-dates" hidden>
+                        <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+                        <span data-election-start></span>
+                        <span data-election-date-sep> — </span>
+                        <span data-election-end></span>
+                    </p>
+
+                    <div class="election-actions">
+                        <a href="/vote" class="cta-primary" id="election-vote-btn" aria-label="صوّت الآن في الانتخابات النشطة" hidden>
+                            <i class="fa-solid fa-vote-yea" aria-hidden="true"></i>
+                            صوّت الآن
+                        </a>
+                        <a href="/results" class="cta-secondary" id="election-results-btn" hidden>
+                            <i class="fa-solid fa-chart-bar" aria-hidden="true"></i>
+                            عرض النتائج
+                        </a>
+                    </div>
+                </div>
+
+                <div class="election-slogan-col" aria-hidden="true">
                     <p>صوتك..</p>
                     <p>مستقبل وطن..</p>
-                    <p>صوتك أمانة.</p>
+                    <p class="slogan-accent">صوتك أمانة.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <script src="js/script.js"></script>
+        <!-- ===== HOW IT WORKS ===== -->
+        <section class="steps-section" aria-labelledby="steps-heading">
+            <div class="section-header">
+                <span class="section-eyebrow">خطوات بسيطة</span>
+                <h2 id="steps-heading">كيف تصوّت في 3 خطوات؟</h2>
+            </div>
+
+            <div class="steps-row">
+                <article class="step-item" aria-label="الخطوة الأولى">
+                    <div class="step-number" aria-hidden="true">1</div>
+                    <div class="step-icon"><i class="fa-solid fa-id-card" aria-hidden="true"></i></div>
+                    <h3>أدخل رقمك القومي</h3>
+                    <p>سيتم التحقق من هويتك في قاعدة البيانات</p>
+                </article>
+
+                <div class="step-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></div>
+
+                <article class="step-item" aria-label="الخطوة الثانية">
+                    <div class="step-number" aria-hidden="true">2</div>
+                    <div class="step-icon"><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i></div>
+                    <h3>أدخل رمز OTP</h3>
+                    <p>رمز مكوّن من 6 أرقام يُرسل على بريدك الإلكتروني</p>
+                </article>
+
+                <div class="step-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></div>
+
+                <article class="step-item" aria-label="الخطوة الثالثة">
+                    <div class="step-number" aria-hidden="true">3</div>
+                    <div class="step-icon"><i class="fa-solid fa-check-to-slot" aria-hidden="true"></i></div>
+                    <h3>اختر وأكّد تصويتك</h3>
+                    <p>صوّت لمرشحك وتأكد من تسجيل صوتك بنجاح</p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="site-footer" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="images/logo.png" alt="شعار Egy Vote" class="footer-logo">
+                <p>منصة Egy Vote للتصويت الإلكتروني الآمن</p>
+            </div>
+
+            <nav class="footer-links" aria-label="روابط التذييل">
+                <a href="/about">حول المنصة</a>
+                <a href="/how-to-vote">كيفية التصويت</a>
+                <a href="/faq">الأسئلة الشائعة</a>
+                <a href="/contact">الدعم</a>
+            </nav>
+
+            <p class="footer-copy">
+                &copy; 2026 منصة التصويت الإلكتروني — جميع الحقوق محفوظة
+            </p>
+        </div>
+    </footer>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+    <!-- Scripts -->
+    <script src="js/script.js" defer></script>
+    <script src="js/index.js" defer></script>
+    <script src="js/indexPage.js" defer></script>
 </body>
 
 </html>

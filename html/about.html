@@ -1,83 +1,102 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Egy vote</title>
+    <meta name="description" content="تعرف على منصة Egy Vote للتصويت الإلكتروني — أهدافها، مميزاتها، وأمانها.">
+    <title>حول المنصة — Egy Vote</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="../css/about.css">
+    <link rel="stylesheet" href="/css/electionFlow.css">
+    <style>
+        .about-page { width:min(860px,calc(100% - 32px)); margin:50px auto 80px; display:flex; flex-direction:column; gap:24px; }
+        .about-hero { text-align:center; padding:40px 24px; background:linear-gradient(180deg,rgba(14,58,93,0.7),rgba(8,20,35,0.7)); border:1px solid var(--card-border); border-radius:32px; }
+        .about-hero h1 { font-size:clamp(30px,4vw,46px); font-weight:900; margin:12px 0; }
+        .about-hero p { color:var(--text-muted); font-size:18px; line-height:1.8; max-width:60ch; margin:0 auto; }
+        .about-box {
+            padding:28px 24px;
+            background:linear-gradient(180deg,rgba(14,58,93,0.55),rgba(8,20,35,0.55));
+            border:1px solid var(--card-border);
+            border-radius:24px;
+        }
+        .about-box-header { display:flex; align-items:center; gap:14px; margin-bottom:14px; }
+        .about-box-icon { font-size:24px; color:var(--text-soft); }
+        .about-box h2, .about-box h3 { font-size:clamp(20px,2.5vw,26px); font-weight:800; margin:0; }
+        .about-box p { color:var(--text-muted); line-height:1.9; font-size:17px; margin:0; }
+    </style>
 </head>
-
 <body>
     <header>
-        <nav>
-            <a href="../index.html" class="logo-link" aria-label="الصفحة الرئيسية">
-                <img src="../images/logo.png" alt="شعار الموقع" id="logo">
+        <nav aria-label="القائمة الرئيسية">
+            <a href="/" class="logo-link" aria-label="الصفحة الرئيسية">
+                <img src="/images/logo.png" alt="شعار Egy Vote" id="logo">
             </a>
             <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">
                 <i class="fa-solid fa-bars" aria-hidden="true"></i>
             </button>
-            <div class="links">
-                <a href="../index.html">الرئيسية</a>
-                <a href="about.html" class="active">حول المنصة</a>
-                <a href="howToVote.html">كيفية التصويت</a>
-                <a href="contactUs.html">الدعم</a>
+            <div class="links" id="nav-links">
+                <a href="/">الرئيسية</a>
+                <a href="/about" class="active" aria-current="page">حول المنصة</a>
+                <a href="/how-to-vote">كيفية التصويت</a>
+                <a href="/contact">الدعم</a>
             </div>
         </nav>
     </header>
 
-    <section class="about-section">
+    <main class="about-page" id="main-content">
+        <section class="about-hero" aria-labelledby="about-title">
+            <span class="eyebrow"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> حول المنصة</span>
+            <h1 id="about-title">منصة Egy Vote</h1>
+            <p>منصة رقمية حديثة تهدف إلى تسهيل عملية التصويت بطريقة آمنة وسريعة وشفافة.</p>
+        </section>
 
-        <div class="about-box">
-            <h2>حول المنصة</h2>
-            <p>
-                مرحبًا بكم في منصة التصويت الإلكتروني، وهي منصة رقمية حديثة تهدف إلى تسهيل عملية التصويت
-                بطريقة آمنة، سريعة، وشفافة. تم تصميم هذه المنصة لتوفير تجربة تصويت سهلة للمستخدمين،
-                مع ضمان حماية البيانات والتحقق من الهوية ومنع التلاعب أو تكرار التصويت.
-            </p>
-        </div>
+        <article class="about-box">
+            <div class="about-box-header">
+                <i class="fa-solid fa-flag about-box-icon" aria-hidden="true"></i>
+                <h2>عن المنصة</h2>
+            </div>
+            <p>مرحبًا بكم في منصة التصويت الإلكتروني Egy Vote، وهي منصة رقمية مصرية حديثة تهدف إلى تسهيل عملية التصويت بطريقة آمنة، سريعة، وشفافة. تم تصميم هذه المنصة لتوفير تجربة تصويت سهلة للمستخدمين، مع ضمان حماية البيانات والتحقق من الهوية ومنع التلاعب أو تكرار التصويت.</p>
+        </article>
 
-        <div class="about-box">
-            <h3>هدف المنصة</h3>
-            <p>
-                تسعى المنصة إلى تطوير العملية الانتخابية من خلال توظيف التكنولوجيا الحديثة في خدمة المجتمع،
-                بما يساهم في تعزيز المشاركة، وتقليل الوقت والجهد، وتحقيق أعلى درجات الموثوقية والشفافية
-                في إدارة الانتخابات وعرض النتائج.
-            </p>
-        </div>
+        <article class="about-box">
+            <div class="about-box-header">
+                <i class="fa-solid fa-bullseye about-box-icon" aria-hidden="true"></i>
+                <h3>هدف المنصة</h3>
+            </div>
+            <p>تسعى المنصة إلى تطوير العملية الانتخابية من خلال توظيف التكنولوجيا الحديثة في خدمة المجتمع، بما يساهم في تعزيز المشاركة، وتقليل الوقت والجهد، وتحقيق أعلى درجات الموثوقية والشفافية في إدارة الانتخابات وعرض النتائج.</p>
+        </article>
 
-        <div class="about-box">
-            <h3>مميزات المنصة</h3>
-            <p>
-                توفر المنصة مجموعة من المميزات التي تساعد على إنجاح العملية الانتخابية، مثل التحقق من هوية الناخب،
-                عرض المرشحين بشكل منظم، إمكانية التصويت بسهولة، حماية بيانات المستخدمين، ومنع التصويت المكرر،
-                بالإضافة إلى عرض النتائج بشكل واضح بعد انتهاء فترة التصويت.
-            </p>
-        </div>
+        <article class="about-box">
+            <div class="about-box-header">
+                <i class="fa-solid fa-star about-box-icon" aria-hidden="true"></i>
+                <h3>مميزات المنصة</h3>
+            </div>
+            <p>توفر المنصة مجموعة من المميزات التي تساعد على إنجاح العملية الانتخابية، مثل التحقق من هوية الناخب بالرقم القومي، إرسال رمز OTP عبر البريد الإلكتروني، عرض المرشحين بشكل منظم، إمكانية التصويت بسهولة، حماية بيانات المستخدمين، ومنع التصويت المكرر، بالإضافة إلى عرض النتائج بشكل واضح بعد انتهاء فترة التصويت.</p>
+        </article>
 
-        <div class="about-box">
-            <h3>الأمان والخصوصية</h3>
-            <p>
-                تعتمد المنصة على معايير أساسية للأمان والخصوصية، لضمان سرية البيانات ونزاهة العملية الانتخابية،
-                حيث يتم تسجيل كل صوت بطريقة منظمة وآمنة، مع الحفاظ على حقوق المستخدمين وضمان عدالة التصويت.
-            </p>
-        </div>
+        <article class="about-box">
+            <div class="about-box-header">
+                <i class="fa-solid fa-shield-halved about-box-icon" aria-hidden="true"></i>
+                <h3>الأمان والخصوصية</h3>
+            </div>
+            <p>تعتمد المنصة على معايير أساسية للأمان والخصوصية، لضمان سرية البيانات ونزاهة العملية الانتخابية، حيث يتم تسجيل كل صوت بطريقة منظمة وآمنة، مع الحفاظ على حقوق المستخدمين وضمان عدالة التصويت.</p>
+        </article>
 
-        <div class="about-box">
-            <h3>رؤيتنا</h3>
-            <p>
-                نؤمن بأن التحول الرقمي يمكن أن يساهم بشكل كبير في تحسين الأنظمة الانتخابية، ولذلك تم إنشاء هذه
-                المنصة لتكون نموذجًا حديثًا يجمع بين سهولة الاستخدام، الأمان، والشفافية، بما يحقق تجربة أفضل
-                لجميع المشاركين.
-            </p>
-        </div>
+        <article class="about-box">
+            <div class="about-box-header">
+                <i class="fa-solid fa-eye about-box-icon" aria-hidden="true"></i>
+                <h3>رؤيتنا</h3>
+            </div>
+            <p>نؤمن بأن التحول الرقمي يمكن أن يساهم بشكل كبير في تحسين الأنظمة الانتخابية، ولذلك تم إنشاء هذه المنصة لتكون نموذجًا حديثًا يجمع بين سهولة الاستخدام، الأمان، والشفافية، بما يحقق تجربة أفضل لجميع المشاركين.</p>
+        </article>
+    </main>
 
-    </section>
-    <script src="../js/script.js"></script>
+    <footer role="contentinfo" style="text-align:center;padding:24px;border-top:1px solid var(--card-border);color:var(--text-muted);font-size:14px;">
+        &copy; 2026 منصة Egy Vote — جميع الحقوق محفوظة
+    </footer>
+
+    <script src="/js/script.js" defer></script>
 </body>
-
 </html>

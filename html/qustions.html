@@ -1,122 +1,127 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الأسئلة الشائعة - Egy Vote</title>
+    <meta name="description" content="الأسئلة الشائعة حول منصة Egy Vote للتصويت الإلكتروني.">
+    <title>الأسئلة الشائعة — Egy Vote</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="../css/qustions.css">
+    <link rel="stylesheet" href="/css/qustions.css">
 </head>
-
 <body>
     <header>
-        <nav>
-            <a href="../index.html" class="logo-link" aria-label="الصفحة الرئيسية">
-                <img src="../images/logo.png" alt="شعار الموقع" id="logo">
+        <nav aria-label="القائمة الرئيسية">
+            <a href="/" class="logo-link" aria-label="الصفحة الرئيسية">
+                <img src="/images/logo.png" alt="شعار Egy Vote" id="logo">
             </a>
             <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">
                 <i class="fa-solid fa-bars" aria-hidden="true"></i>
             </button>
-            <div class="links">
-                <a href="../index.html">الرئيسية</a>
-                <a href="about.html">حول المنصة</a>
-                <a href="howToVote.html">كيفية التصويت</a>
-                <a href="contactUs.html" class="active">الدعم</a>
+            <div class="links" id="nav-links">
+                <a href="/">الرئيسية</a>
+                <a href="/about">حول المنصة</a>
+                <a href="/how-to-vote">كيفية التصويت</a>
+                <a href="/contact">الدعم</a>
             </div>
         </nav>
     </header>
 
-    <main class="faq-page">
-        <section class="faq-hero">
-            <span class="eyebrow">الأسئلة الشائعة</span>
-            <h1>إجابات سريعة على أهم الأسئلة</h1>
-            <p>
-                جمعنا هنا أكثر الأسئلة اللي ممكن تواجهك أثناء استخدام منصة Egy Vote،
-                علشان تلاقي الإجابة بسرعة قبل ما تتواصل مع فريق الدعم.
-            </p>
+    <main class="faq-page" id="main-content">
+        <section class="faq-hero" aria-labelledby="faq-title">
+            <span class="eyebrow">مساعدة سريعة</span>
+            <h1 id="faq-title">الأسئلة الشائعة</h1>
+            <p>إجابات على أكثر الأسئلة شيوعًا حول استخدام منصة Egy Vote.</p>
         </section>
 
         <section class="faq-list" aria-label="قائمة الأسئلة الشائعة">
-            <details class="faq-item" open>
-                <summary>إزاي أبدأ عملية التصويت على المنصة؟</summary>
-                <p>
-                    ادخل على الصفحة الرئيسية واضغط على زر "صوت الآن"، وبعدها اتبع خطوات
-                    تسجيل الدخول والتحقق المطلوبة حتى تنتقل لصفحة التصويت.
-                </p>
+
+            <details class="faq-item" id="faq-1">
+                <summary>
+                    <span>كيف أبدأ عملية التصويت؟</span>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </summary>
+                <div class="faq-answer">
+                    <p>اضغط على زر "صوّت الآن" في الصفحة الرئيسية، ثم اتبع الخطوات: أدخل رقمك القومي، استلم رمز OTP على بريدك الإلكتروني، وأكّد تصويتك.</p>
+                </div>
             </details>
 
-            <details class="faq-item">
-                <summary>ماذا أفعل إذا كان الرقم القومي غير مسجل؟</summary>
-                <p>
-                    لو ظهر لك إن الرقم القومي غير مسجل، تواصل مع فريق الدعم من خلال
-                    صفحة الدعم وأرسل الرقم القومي وبياناتك للمراجعة.
-                </p>
+            <details class="faq-item" id="faq-2">
+                <summary>
+                    <span>ما هو رمز OTP وكيف أحصل عليه؟</span>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </summary>
+                <div class="faq-answer">
+                    <p>رمز OTP هو رمز تحقق مؤقت مكوّن من 6 أرقام يُرسَل إلى بريدك الإلكتروني المسجل في المنصة. بعد إدخال رقمك القومي بشكل صحيح يتم إرساله تلقائيًا.</p>
+                </div>
             </details>
 
-            <details class="faq-item">
-                <summary>ماذا أفعل إذا لم يصلني رمز التحقق؟</summary>
-                <p>
-                    تأكد أولًا من أن رقم الهاتف المرتبط بحسابك صحيح، وانتظر بضع دقائق.
-                    لو استمرت المشكلة، تواصل مع الدعم واذكر الرقم القومي ورقم الهاتف.
-                </p>
+            <details class="faq-item" id="faq-3">
+                <summary>
+                    <span>هل يمكنني التصويت أكثر من مرة؟</span>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </summary>
+                <div class="faq-answer">
+                    <p>لا، كل ناخب مسموح له بالتصويت مرة واحدة فقط. بعد تأكيد تصويتك يُسجَّل في قاعدة البيانات ولن تتمكن من التصويت مجددًا.</p>
+                </div>
             </details>
 
-            <details class="faq-item">
-                <summary>هل يمكنني التصويت أكثر من مرة؟</summary>
-                <p>
-                    لا، كل مواطن يحق له التصويت مرة واحدة فقط، وبعد تسجيل الصوت
-                    لا يمكن إعادة التصويت مرة أخرى.
-                </p>
+            <details class="faq-item" id="faq-4">
+                <summary>
+                    <span>ماذا أفعل إذا لم يصلني رمز OTP؟</span>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </summary>
+                <div class="faq-answer">
+                    <p>تحقق أولًا من مجلد الرسائل المزعجة (Spam) في بريدك. إذا لم تجده، اضغط على زر "إعادة إرسال الرمز" في صفحة التحقق. إذا استمرت المشكلة، تواصل مع فريق الدعم.</p>
+                </div>
             </details>
 
-            <details class="faq-item">
-                <summary>هل أقدر أغيّر صوتي بعد الإرسال؟</summary>
-                <p>
-                    لا يمكن تعديل أو تغيير الاختيار بعد تأكيد التصويت، لذلك تأكد من
-                    المرشح الذي اخترته قبل الضغط على زر التأكيد.
-                </p>
+            <details class="faq-item" id="faq-5">
+                <summary>
+                    <span>هل بياناتي آمنة على المنصة؟</span>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </summary>
+                <div class="faq-answer">
+                    <p>نعم، تعتمد المنصة على معايير أمان أساسية لحماية بياناتك. لا يُشارَك رقمك القومي أو بريدك الإلكتروني مع أي جهة خارجية.</p>
+                </div>
             </details>
 
-            <details class="faq-item">
-                <summary>ما هي البيانات التي يجب تجهيزها قبل التصويت؟</summary>
-                <p>
-                    يفضل تجهيز الرقم القومي والتأكد من أن رقم الهاتف المسجل لديك
-                    صحيح ومتاح لاستقبال رمز التحقق.
-                </p>
+            <details class="faq-item" id="faq-6">
+                <summary>
+                    <span>متى تُعلَن نتائج الانتخابات؟</span>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </summary>
+                <div class="faq-answer">
+                    <p>تُعرض النتائج فور انتهاء فترة التصويت وإغلاق الانتخابات من قِبَل الإدارة. يمكنك الاطلاع عليها من صفحة "النتائج".</p>
+                </div>
             </details>
 
-            <details class="faq-item">
-                <summary>إلى أين أتوجه لو واجهت مشكلة تقنية؟</summary>
-                <p>
-                    يمكنك التوجه مباشرة إلى صفحة الدعم لإرسال رسالة مفصلة بالمشكلة،
-                    أو استخدام البريد الإلكتروني ورقم الهاتف الظاهرين في صفحة الدعم.
-                </p>
+            <details class="faq-item" id="faq-7">
+                <summary>
+                    <span>كيف أتواصل مع فريق الدعم؟</span>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </summary>
+                <div class="faq-answer">
+                    <p>يمكنك التواصل معنا عبر البريد الإلكتروني <a href="mailto:voteegy@gmail.com">voteegy@gmail.com</a> أو من خلال صفحة <a href="contactUs.html">الدعم</a>.</p>
+                </div>
             </details>
         </section>
 
-        <section class="faq-actions">
-            <article class="action-card">
-                <i class="fa-solid fa-circle-info"></i>
-                <h2>محتاج شرح الخطوات؟</h2>
-                <p>راجع صفحة كيفية التصويت لمعرفة خطوات العملية بشكل مرتب وواضح.</p>
-                <a href="howToVote.html">كيفية التصويت</a>
-            </article>
-
-            <article class="action-card">
-                <i class="fa-solid fa-headset"></i>
-                <h2>لسه محتاج مساعدة؟</h2>
-                <p>لو ما لقيتش إجابة سؤالك هنا، تواصل مع الدعم وسنساعدك بأسرع وقت.</p>
-                <a href="contactUs.html">تواصل مع الدعم</a>
-            </article>
-        </section>
+        <div class="faq-cta" role="complementary" aria-label="لم تجد إجابتك؟">
+            <p>لم تجد إجابة لسؤالك؟</p>
+            <a href="/contact" class="cta-link">
+                <i class="fa-solid fa-headset" aria-hidden="true"></i>
+                تواصل مع فريق الدعم
+            </a>
+        </div>
     </main>
 
-    <script src="../js/script.js"></script>
-</body>
+    <footer role="contentinfo" style="text-align:center;padding:24px;border-top:1px solid rgba(53,224,196,0.12);color:var(--text-muted);font-size:14px;background:rgba(5,12,22,0.7);">
+        &copy; 2026 منصة Egy Vote — جميع الحقوق محفوظة
+    </footer>
 
+    <script src="/js/script.js" defer></script>
+</body>
 </html>

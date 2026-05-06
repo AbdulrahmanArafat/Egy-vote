@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const mobileBreakpoint = 640;
     const navs = document.querySelectorAll("nav");
+    const backendBaseUrl = "http://127.0.0.1:3000";
+    const shouldProxyBackendRoutes = window.location.port !== "3000";
 
     navs.forEach((nav) => {
         const toggleButton = nav.querySelector(".menu-toggle");
@@ -66,4 +68,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         closeMenu();
     });
+
+    // When opened from Live Server (or any non-3000 origin), backend routes
+    // like /admin/login and /results must be redirected to the Express server.
+    if (shouldProxyBackendRoutes) {
+        document.querySelectorAll("a[href^='/']").forEach((anchor) => {
+            anchor.addEventListener("click", (event) => {
+                const targetPath = anchor.getAttribute("href");
+                if (!targetPath) {
+                    return;
+                }
+                event.preventDefault();
+                window.location.href = `${backendBaseUrl}${targetPath}`;
+            });
+        });
+    }
 });
