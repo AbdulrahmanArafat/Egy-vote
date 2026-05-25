@@ -445,17 +445,27 @@ router.get("/election/status", async (request, response) => {
     try {
         const activeElection = await Election.findOne({ status: "active" })
             .sort({ createdAt: -1 })
-            .select("_id title status start_date end_date")
+            .select("_id title status start_at end_at")
             .lean();
 
         const latestClosedElection = await Election.findOne({ status: "ended" })
             .sort({ manually_closed_at: -1, updatedAt: -1 })
-            .select("_id title status start_date end_date")
+            .select("_id title status start_at end_at")
             .lean();
 
+        // Transform for frontend which expects start_date / end_date
+        const transformElection = (election) => {
+            if (!election) return null;
+            return {
+                ...election,
+                start_date: election.start_at,
+                end_date: election.end_at
+            };
+        };
+
         return response.json({
-            activeElection: activeElection || null,
-            latestClosedElection: latestClosedElection || null
+            activeElection: transformElection(activeElection),
+            latestClosedElection: transformElection(latestClosedElection)
         });
     } catch (error) {
         console.error("election-status error:", error);

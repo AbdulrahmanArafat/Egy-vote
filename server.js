@@ -126,13 +126,19 @@ async function startServer() {
             console.log("⚠️  البريد الإلكتروني غير مهيّأ — تحقق من إعدادات .env");
         }
 
-        app.listen(port, () => {
-            console.log(`🚀 خادم Egy Vote يعمل على http://localhost:${port}`);
-        });
+        if (process.env.VERCEL !== "1") {
+            app.listen(port, () => {
+                console.log(`🚀 خادم Egy Vote يعمل على http://localhost:${port}`);
+            });
+        }
     } catch (error) {
         console.error("❌ فشل تشغيل الخادم:", error);
-        process.exit(1);
+        if (process.env.VERCEL !== "1") {
+            process.exit(1);
+        }
     }
 }
 
 startServer();
+
+module.exports = app;

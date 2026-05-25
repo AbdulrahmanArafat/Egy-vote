@@ -10,39 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="/css/electionFlow.css">
-    <style>
-        .results-hero { text-align:center; padding:32px 24px 16px; }
-        .results-hero h1 { font-size:clamp(26px,4vw,42px); margin-bottom:10px; }
-        .results-hero p { color:var(--text-muted); font-size:18px; }
-        .total-badge {
-            display:inline-flex; align-items:center; gap:8px;
-            background:rgba(53,224,196,0.12); border:1px solid rgba(53,224,196,0.25);
-            color:var(--text-soft); padding:8px 20px; border-radius:999px;
-            font-size:16px; font-weight:700; margin:16px 0;
-        }
-        .results-table { width:100%; border-collapse:collapse; margin-top:16px; }
-        .results-table thead { background:rgba(53,224,196,0.08); }
-        .results-table th {
-            padding:14px 16px; text-align:right; font-size:14px; font-weight:700;
-            color:var(--text-soft); border-bottom:2px solid var(--card-border);
-        }
-        .results-table td { padding:14px 16px; border-bottom:1px solid rgba(53,224,196,0.06); font-size:15px; vertical-align:middle; }
-        .results-table tbody tr:hover { background:rgba(53,224,196,0.04); }
-        .results-table tbody tr.winner-row { background:rgba(244,185,66,0.06); }
-        .candidate-cell { display:flex; align-items:center; gap:12px; }
-        .candidate-cell img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--card-border); }
-        .bar-wrap { background:rgba(255,255,255,0.06); border-radius:999px; height:10px; min-width:80px; overflow:hidden; }
-        .bar-fill { height:100%; border-radius:999px; background:linear-gradient(90deg,#35E0C4,#7FF0DE); }
-        .winner-row .bar-fill { background:linear-gradient(90deg,#F4B942,#FFD166); }
-        .winner-badge {
-            display:inline-flex; align-items:center; gap:6px;
-            background:rgba(244,185,66,0.15); color:#FFD166;
-            padding:4px 12px; border-radius:999px; font-size:13px; font-weight:700;
-        }
-        .empty-state { text-align:center; padding:60px 24px; color:var(--text-muted); }
-        .empty-state i { font-size:52px; color:var(--text-soft); opacity:0.4; margin-bottom:16px; display:block; }
-        .table-wrap { overflow-x:auto; border-radius:14px; border:1px solid var(--card-border); }
-    </style>
+    <link rel="stylesheet" href="/css/results.css">
 </head>
 <body>
     <header>

@@ -1,9 +1,16 @@
 {
+  "name": "egy-vote",
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "npm run vercel-build",
   "functions": {
     "server.js": {
       "includeFiles": "**/*.html"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/server.js"
+    }
+  ]
 }

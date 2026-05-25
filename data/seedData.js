@@ -113,8 +113,8 @@ const candidateSeeds = [
         age: 59,
         number_of_votes: 0,
         photo: "/images/candidates/abdel-fattah-el-sisi.png",
-        bio: "",
-        manifesto: "",
+        bio: "sdjsjdf",
+        manifesto: "mndffjmdsd",
         status: "approved"
     }
 ];
