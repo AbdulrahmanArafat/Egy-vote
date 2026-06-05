@@ -102,12 +102,12 @@ app.get("/results", (request, response) => {
 // ─── JSON error handler ───────────────────────────────────────────────────────
 app.use((error, request, response, next) => {
     if (error instanceof SyntaxError && error.status === 400 && "body" in error) {
-        return response.status(400).json({ message: "جسم الطلب ليس JSON صحيحًا." });
+        return response.status(400).json({ message: "Invalid JSON body." });
     }
     if (error.code === "LIMIT_FILE_SIZE") {
-        return response.status(400).json({ message: "حجم الملف يتجاوز الحد المسموح به (5 ميغابايت)." });
+        return response.status(400).json({ message: "File size exceeds the allowed limit (5 MB)." });
     }
-    if (error.message && error.message.includes("نوع الملف")) {
+    if (error.message && error.message.includes("File type")) {
         return response.status(400).json({ message: error.message });
     }
     return next(error);
@@ -121,18 +121,18 @@ async function startServer() {
         await bootstrapAdminPlatform();
 
         if (isEmailConfigured()) {
-            console.log("✅ البريد الإلكتروني مفعّل — سيتم إرسال OTP عبر البريد.");
+            console.log("Email is configured - OTP will be sent via email.");
         } else {
-            console.log("⚠️  البريد الإلكتروني غير مهيّأ — تحقق من إعدادات .env");
+            console.log("Email is not configured - check .env settings");
         }
 
         if (process.env.VERCEL !== "1") {
             app.listen(port, () => {
-                console.log(`🚀 خادم Egy Vote يعمل على http://localhost:${port}`);
+                console.log(`Egy Vote server is running at: http://localhost:${port}`);
             });
         }
     } catch (error) {
-        console.error("❌ فشل تشغيل الخادم:", error);
+        console.error("Server startup failure:", error);
         if (process.env.VERCEL !== "1") {
             process.exit(1);
         }

@@ -1,7 +1,7 @@
 const voterSeeds = [
     {
         name: "عبدالرحمن عرفات المغاوري",
-        has_voted: false,
+        has_voted: true,
         national_id: "30410011202835",
         email: "abnra3838@gmail.com",
         student_id: "STD-0001",
@@ -111,7 +111,7 @@ const candidateSeeds = [
     {
         name: "عبد الفتاح السيسي",
         age: 59,
-        number_of_votes: 0,
+        number_of_votes: 1,
         photo: "/images/candidates/abdel-fattah-el-sisi.png",
         bio: "sdjsjdf",
         manifesto: "mndffjmdsd",
