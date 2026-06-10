@@ -13,7 +13,7 @@ async function ensureDefaultElection() {
         oneYearLater.setFullYear(now.getFullYear() + 1);
 
         election = await Election.create({
-            title: "Egy Vote General Election",
+            title: "انتخابات رئاسة جمهورية مصر العربية",
             slug: defaultSlug,
             description: "انتخابات الجولة الرئاسية على منصة Egy Vote.",
             category: "Presidential",
@@ -26,14 +26,18 @@ async function ensureDefaultElection() {
             allow_live_results: false
         });
     } else {
+        // تحديث العنوان إذا تغيّر
+        election.title = "انتخابات رئاسة جمهورية مصر العربية";
+
         // إضافة أي مرشح جديد لم يُضف بعد للانتخابات
         const existingIds = election.candidate_ids.map(String);
         const newCandidates = candidates.filter((c) => !existingIds.includes(String(c._id)));
 
         if (newCandidates.length) {
             election.candidate_ids.push(...newCandidates.map((c) => c._id));
-            await election.save();
         }
+
+        await election.save();
     }
 
     // ربط الانتخابات بكل مرشح معتمد

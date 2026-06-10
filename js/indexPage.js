@@ -94,7 +94,7 @@
         const resultsBtn = document.getElementById("election-results-btn");
 
         if (voteBtn) voteBtn.hidden = !activeElection;
-        if (resultsBtn) resultsBtn.hidden = !latestClosedElection;
+        if (resultsBtn) resultsBtn.hidden = !!activeElection;
     }
 
     // ── تشغيل ──────────────────────────────────────────────────────────────────
