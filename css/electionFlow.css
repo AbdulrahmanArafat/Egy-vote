@@ -599,9 +599,14 @@ nav .links a:hover{
     font-size: 18px;
 }
 
+/* ── Fix candidates-grid min-width overflow on narrow phones ── */
+.candidates-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+}
+
 @media (max-width: 992px){
     body{
-        padding-top: 92px;
+        padding-top: 80px;
     }
 
     nav{
@@ -624,9 +629,38 @@ nav .links a:hover{
     }
 }
 
+@media (max-width: 768px) {
+    .hero-panel {
+        padding: 24px 20px;
+        gap: 18px;
+    }
+
+    .flow-page {
+        margin-top: 36px;
+        margin-bottom: 56px;
+        gap: 20px;
+    }
+
+    .surface-card {
+        padding: 24px 20px;
+    }
+
+    .candidates-header {
+        flex-direction: column;
+    }
+
+    .receipt-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .modal-card {
+        padding: 22px 18px;
+    }
+}
+
 @media (max-width: 640px){
     body{
-        padding-top: 120px;
+        padding-top: 80px;
     }
 
     nav{
@@ -704,5 +738,35 @@ nav .links a:hover{
 
     .candidate-card h3{
         font-size: 22px;
+    }
+
+    .receipt-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .candidates-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .actions-row {
+        flex-direction: column;
+    }
+
+    .actions-row .secondary-button,
+    .actions-row .primary-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .simple-entry-card {
+        padding: 20px 14px;
+    }
+
+    .primary-button,
+    .secondary-button,
+    .danger-button {
+        font-size: 16px;
+        padding: 12px 18px;
     }
 }

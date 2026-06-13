@@ -155,8 +155,33 @@ table tbody tr:hover{background:rgba(53,224,196,0.04);}
 
 /* ── Responsive ── */
 @media(max-width:768px){
-    .admin-header{flex-direction:column;gap:12px;padding:14px 18px;}
+    .admin-header{flex-direction:column;gap:12px;padding:14px 18px;align-items:flex-start;}
+    .header-actions{width:100%;justify-content:flex-end;}
     .form-grid{grid-template-columns:1fr;}
     .admin-container{padding:20px 12px;}
     .panel{padding:18px 14px;}
+    .election-buttons .btn{min-width:0;flex:1 1 calc(50% - 6px);}
+    .tab-btn{padding:10px 14px;font-size:14px;}
+}
+
+@media(max-width:480px){
+    .admin-header{padding:12px 14px;}
+    .admin-brand-text h1{font-size:17px;}
+    .admin-brand img{height:30px;}
+    .logout-btn{font-size:13px;padding:8px 14px;}
+    .election-buttons{flex-direction:column;}
+    .election-buttons .btn{width:100%;justify-content:center;}
+    .table-actions{flex-direction:column;}
+    .table-actions .btn{width:100%;justify-content:center;}
+    .panel-title{font-size:16px;}
+    .quick-links{grid-template-columns:repeat(2,1fr);}
+}
+
+/* Fix admin-notification overflow on narrow screens */
+.admin-notification{
+    left:50%;
+    transform:translateX(-50%);
+    width:auto;
+    min-width:min(280px, calc(100% - 32px));
+    max-width:calc(100% - 32px);
 }

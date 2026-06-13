@@ -26,6 +26,12 @@ nav .links a:hover,nav .links a.active{color:var(--text-soft);}
 .about-box-icon{font-size:22px;color:var(--text-soft);}
 .about-box h2,.about-box h3{font-size:clamp(19px,2.5vw,24px);font-weight:800;margin:0;}
 .about-box p{color:var(--text-muted);line-height:1.9;font-size:16px;}
+@media(max-width:768px){
+    .about-page{margin:36px auto 60px;}
+    .about-hero{padding:28px 18px;}
+    .about-hero p{max-width:100%;}
+    .about-box{padding:20px 18px;}
+}
 @media(max-width:640px){
     nav{flex-direction:row-reverse;padding:12px 16px;height:auto;}
     nav #logo{margin:0;height:28px;}
@@ -33,4 +39,7 @@ nav .links a:hover,nav .links a.active{color:var(--text-soft);}
     nav .links{display:none;position:absolute;top:calc(100% + 8px);right:16px;left:16px;flex-direction:column;align-items:stretch;gap:8px;padding:14px 16px;border-radius:20px;background:var(--nav-bg);border:1px solid var(--nav-border);}
     nav.menu-open .links{display:flex;}
     nav .links a{width:100%;text-align:right;font-size:19px;}
+    .about-page{margin:28px auto 48px;gap:16px;}
+    .about-hero{border-radius:20px;padding:24px 16px;}
+    .about-box{border-radius:18px;padding:18px 14px;}
 }

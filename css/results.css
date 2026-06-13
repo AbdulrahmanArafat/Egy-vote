@@ -12,20 +12,38 @@
 .results-table th {
     padding:14px 16px; text-align:right; font-size:14px; font-weight:700;
     color:var(--text-soft); border-bottom:2px solid var(--card-border);
+    white-space:nowrap;
 }
 .results-table td { padding:14px 16px; border-bottom:1px solid rgba(53,224,196,0.06); font-size:15px; vertical-align:middle; }
 .results-table tbody tr:hover { background:rgba(53,224,196,0.04); }
 .results-table tbody tr.winner-row { background:rgba(244,185,66,0.06); }
 .candidate-cell { display:flex; align-items:center; gap:12px; }
-.candidate-cell img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--card-border); }
-.bar-wrap { background:rgba(255,255,255,0.06); border-radius:999px; height:10px; min-width:80px; overflow:hidden; }
+.candidate-cell img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--card-border); flex-shrink:0; }
+.bar-wrap { background:rgba(255,255,255,0.06); border-radius:999px; height:10px; width:100%; min-width:60px; overflow:hidden; }
 .bar-fill { height:100%; border-radius:999px; background:linear-gradient(90deg,#35E0C4,#7FF0DE); }
 .winner-row .bar-fill { background:linear-gradient(90deg,#F4B942,#FFD166); }
 .winner-badge {
     display:inline-flex; align-items:center; gap:6px;
     background:rgba(244,185,66,0.15); color:#FFD166;
     padding:4px 12px; border-radius:999px; font-size:13px; font-weight:700;
+    white-space:nowrap;
 }
 .empty-state { text-align:center; padding:60px 24px; color:var(--text-muted); }
 .empty-state i { font-size:52px; color:var(--text-soft); opacity:0.4; margin-bottom:16px; display:block; }
-.table-wrap { overflow-x:auto; border-radius:14px; border:1px solid var(--card-border); }
+.table-wrap { overflow-x:auto; border-radius:14px; border:1px solid var(--card-border); -webkit-overflow-scrolling:touch; }
+/* Ensure the table is always wide enough to scroll on small screens */
+.results-table { min-width:480px; }
+
+@media (max-width:768px) {
+    .results-hero { padding:24px 16px 12px; }
+    .results-hero h1 { font-size:clamp(22px,5vw,34px); }
+    .total-badge { font-size:14px; padding:7px 16px; }
+    .results-table th, .results-table td { padding:11px 12px; font-size:14px; }
+    .candidate-cell img { width:36px; height:36px; }
+}
+
+@media (max-width:480px) {
+    .empty-state { padding:40px 16px; }
+    .empty-state i { font-size:40px; }
+    .total-badge { font-size:13px; padding:6px 14px; }
+}
