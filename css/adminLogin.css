@@ -16,14 +16,16 @@
 }
 
 body {
-    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--surface-dark) 100%);
+    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--surface-dark) 100%) !important;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: calc(60px + 32px) 20px 32px !important;
     font-family: 'Tajawal', sans-serif;
     color: var(--text-light);
+    overflow-x: hidden;
 }
 
 .login-container {
