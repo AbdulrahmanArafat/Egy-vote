@@ -17,6 +17,11 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 8080;
 
+// ─── Trust proxy (Railway / Render / Heroku reverse-proxy) ───────────────────
+// Required to correctly read client IP from X-Forwarded-For header.
+// Without this the rate-limiter throws ERR_ERL_UNEXPECTED_X_FORWARDED_FOR.
+app.set("trust proxy", 1);
+
 // ─── Security ─────────────────────────────────────────────────────────────────
 app.disable("x-powered-by");
 
