@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const mobileBreakpoint = 640;
     const navs = document.querySelectorAll("nav");
-    const backendBaseUrl = "http://127.0.0.1:3000";
-    const shouldProxyBackendRoutes = window.location.port !== "3000";
+    const backendBaseUrl = "";
+    const shouldProxyBackendRoutes = false;
 
     navs.forEach((nav) => {
         const toggleButton = nav.querySelector(".menu-toggle");

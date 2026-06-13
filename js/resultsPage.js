@@ -2,7 +2,7 @@
 (function () {
     "use strict";
 
-    const API_BASE = window.location.port === "3000" ? "" : "http://127.0.0.1:3000";
+    const API_BASE = "";
 
     function escapeHtml(value) {
         return String(value ?? "")
