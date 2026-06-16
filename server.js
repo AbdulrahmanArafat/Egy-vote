@@ -118,11 +118,11 @@ app.use((error, request, response, next) => {
     return next(error);
 });
 
-// ─── Server start ─────────────────────────────────────────────────────────────
 async function startServer() {
     try {
         await connectToDatabase();
         await seedDatabase();
+    
         await bootstrapAdminPlatform();
 
         if (isEmailConfigured()) {
