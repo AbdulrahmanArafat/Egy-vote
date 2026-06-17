@@ -36,14 +36,22 @@ function maskEmail(email) {
 async function createOtpSession(voter) {
     const otp = generateOtp();
 
-    await AuthSession.deleteMany({ national_id: voter.national_id });
-    await AuthSession.create({
-        session_type: "otp",
-        national_id: voter.national_id,
-        voter_id: voter._id,
-        otp_code_hash: hashOtp(otp),
-        expires_at: new Date(Date.now() + OTP_TTL_MS)
-    });
+    // Atomic upsert: replace any existing session for this national_id in one
+    // operation. This eliminates the race window that a deleteMany + create pair
+    // creates — two concurrent requests can never both insert a null-token doc.
+    await AuthSession.findOneAndUpdate(
+        { national_id: voter.national_id },
+        {
+            $set: {
+                session_type: "otp",
+                voter_id: voter._id,
+                otp_code_hash: hashOtp(otp),
+                token: null,
+                expires_at: new Date(Date.now() + OTP_TTL_MS)
+            }
+        },
+        { upsert: true, new: true }
+    );
 
     return {
         otp,
